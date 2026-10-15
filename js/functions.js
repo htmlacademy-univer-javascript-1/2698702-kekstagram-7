@@ -29,3 +29,24 @@ const getDigits = (string) => {
   return result === '' ? NaN : parseInt(result, 10);
 };
 getDigits('abc123def456');
+
+const getMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+const isMeetingWithinWorkingHours = (workingDayStart, workingDayEnd, meetingStart, meetingDuration) => {
+  const startWorkingMinutes = getMinutes(workingDayStart);
+  const endWorkingMinutes = getMinutes(workingDayEnd);
+  const startMeetingMinutes = getMinutes(meetingStart);
+  const endMeetingMinutes = startMeetingMinutes + meetingDuration;
+
+  return startMeetingMinutes >= startWorkingMinutes &&
+  endMeetingMinutes <= endWorkingMinutes;
+};
+
+isMeetingWithinWorkingHours('08:00', '17:30', '14:00', 90);
+isMeetingWithinWorkingHours('8:0', '10:0', '8:0', 120);
+isMeetingWithinWorkingHours('08:00', '14:30', '14:00', 90);
+isMeetingWithinWorkingHours('14:00', '17:30', '08:0', 90);
+isMeetingWithinWorkingHours('8:00', '17:30', '08:00', 900);
