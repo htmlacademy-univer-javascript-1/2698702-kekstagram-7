@@ -15,7 +15,8 @@ const createPicture = (photo) => {
   likes.textContent = photo.likes;
   comments.textContent = photo.comments.length;
 
-  picture.addEventListener('click', () => {
+  picture.addEventListener('click', (evt) => {
+    evt.preventDefault();
     openBigPicture(photo);
   });
 
