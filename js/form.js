@@ -11,7 +11,14 @@ const uploadCancel = document.querySelector('.img-upload__cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
-const pristine = new Pristine(uploadForm);
+const pristine = new Pristine(uploadForm, {
+  classTo: 'img-upload__item-wrapper',
+  errorClass: 'img-upload__item--invalid',
+  successClass: 'img-upload__item--valid',
+  errorTextParent: 'img-upload__item-wrapper',
+  errorTextTag: 'div',
+  errorTextClass: 'img-upload__error',
+});
 
 const getHashtags = (value) => value.trim().split(/\s+/).filter(Boolean);
 
