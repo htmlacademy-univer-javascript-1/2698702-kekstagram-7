@@ -37,7 +37,7 @@ const renderComments = (comments) => {
   });
 };
 
-const renderCommentsPortion = () => {
+const onCommentsLoaderClick = () => {
   const nextComments = currentComments.slice(
     renderedCommentsCount,
     renderedCommentsCount + COMMENTS_PER_PORTION
@@ -71,7 +71,7 @@ const openBigPicture = (photo) => {
   commentCount.classList.remove('hidden');
   commentsLoader.classList.remove('hidden');
 
-  renderCommentsPortion();
+  onCommentsLoaderClick();
 };
 
 const onCloseButtonClick = () => {
@@ -89,6 +89,6 @@ const onDocumentKeydown = (evt) => {
 
 document.addEventListener('keydown', onDocumentKeydown);
 
-commentsLoader.addEventListener('click', renderCommentsPortion);
+commentsLoader.addEventListener('click', onCommentsLoaderClick);
 
 export { openBigPicture };
